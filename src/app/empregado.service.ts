@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 })
 export class EmpregadoService {
 
-  private baseUrl = environment.API_URL;
+  private baseUrl = 'localhost:3000';
 
   constructor(private http: HttpClient) { }
 

@@ -15,6 +15,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ClienteModule } from './cliente/cliente.module';
 import { AlertModule } from 'ngx-bootstrap';
 import { RequestInterceptor } from './auth/request.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,

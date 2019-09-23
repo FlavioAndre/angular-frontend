@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseFormComponent } from 'src/app/share/base-form/base-form.component';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, FormGroup, FormArray } from '@angular/forms';
 import { DropdownService } from 'src/app/share/services/dropdown.service';
 import { EstadoBr } from 'src/app/share/models/estado-br.model';
 import { Cidade } from 'src/app/share/models/cidade';
@@ -19,12 +18,13 @@ import { Router } from '@angular/router';
   templateUrl: './cliente-create.component.html',
   styleUrls: ['./cliente-create.component.css']
 })
-export class ClienteCreateComponent extends BaseFormComponent implements OnInit {
+export class ClienteCreateComponent implements OnInit {
 
   estados: EstadoBr[];
   cidades: Cidade[];
 
   tipoPessoas: any[];
+  formulario: FormGroup;
 
   constructor(
     private router: Router,
@@ -36,7 +36,7 @@ export class ClienteCreateComponent extends BaseFormComponent implements OnInit 
     private cepService: ConsultaCepService,
     private dropdownService: DropdownService
   ) {
-    super();
+
   }
 
   ngOnInit() {
@@ -165,4 +165,56 @@ export class ClienteCreateComponent extends BaseFormComponent implements OnInit 
       );
   }
 
+
+  onSubmit() {
+    if (this.formulario.valid) {
+      this.submit();
+    } else {
+      console.log('formulario invalido');
+      this.verificaValidacoesForm(this.formulario);
+    }
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup | FormArray) {
+    Object.keys(formGroup.controls).forEach(campo => {
+      console.log(campo);
+      const controle = formGroup.get(campo);
+      controle.markAsDirty();
+      controle.markAsTouched();
+      if (controle instanceof FormGroup || controle instanceof FormArray) {
+        this.verificaValidacoesForm(controle);
+      }
+    });
+  }
+
+  resetar() {
+    this.formulario.reset();
+  }
+
+  verificaValidTouched(campo: string) {
+    return (
+      !this.formulario.get(campo).valid &&
+      (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
+    );
+  }
+
+  verificaRequired(campo: string) {
+    return (
+      this.formulario.get(campo).hasError('required') &&
+      (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
+    );
+  }
+
+  verificaEmailInvalido() {
+    const campoEmail = this.formulario.get('email');
+    if (campoEmail.errors) {
+      return campoEmail.errors['email'] && campoEmail.touched;
+    }
+  }
+
+  aplicaCssErro(campo: string) {
+    return {
+      'form-control-feedback': this.verificaValidTouched(campo)
+    };
+  }
 }
