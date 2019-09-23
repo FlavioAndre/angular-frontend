@@ -1,0 +1,18 @@
+<h2>Detalhes Empregado</h2>
+
+<hr/>
+<div *ngIf="empregado">
+  <div>
+    <label><b>Nome: </b></label> {{empregado.firstName}}
+  </div>
+  <div>
+    <label><b>Sobrenome: </b></label> {{empregado.lastName}}
+  </div>
+  <div>
+    <label><b>E-mail: </b></label> {{empregado.email}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retornar</button><br>

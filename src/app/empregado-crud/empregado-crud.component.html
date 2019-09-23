@@ -1,0 +1,21 @@
+<h3>Novo Empregado</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input type="text" class="form-control" id="firstName" required [(ngModel)]="empregado.firstName" name="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Sobrenome</label>
+      <input type="text" class="form-control" id="lastName" required [(ngModel)]="empregado.lastName" name="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">E-mail</label>
+      <input type="text" class="form-control" id="email" required [(ngModel)]="empregado.email" name="email">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

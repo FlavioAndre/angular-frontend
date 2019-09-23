@@ -1,0 +1,18 @@
+<h2>Detalhes Cliente</h2>
+
+<hr/>
+<div *ngIf="cliente">
+  <div>
+    <label><b>Nome: </b></label> {{cliente.nome}}
+  </div>
+  <div>
+    <label><b>CPF/CNPJ: </b></label> {{cliente.cpfOuCnpj}}
+  </div>
+  <div>
+    <label><b>E-mail: </b></label> {{cliente.email}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retornar</button><br>

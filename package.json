@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,8 +19,17 @@
     "@angular/platform-browser": "~8.2.4",
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
+    "@ng-bootstrap/ng-bootstrap": "^5.1.1",
+    "angular-font-awesome": "^3.1.2",
+    "bootstrap": "^4.3.1",
+    "core-js": "^3.2.1",
+    "firebase": ">= ^6.6.2 < 7",
+    "font-awesome": "^4.7.0",
+    "jquey": "0.0.1-security",
+    "ngx-bootstrap": "^5.1.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

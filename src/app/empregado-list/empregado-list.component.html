@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Lista de Empregados</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Família</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emregado of empregados$ | async">
+          <td>{{emregado.firstName}}</td>
+          <td>{{emregado.lastName}}</td>
+          <td>{{emregado.email}}</td>
+          <td><button (click)="excluirEmpregado(emregado.id)" class="btn btn-danger">Excluir</button>
+              <button (click)="exibirDetalhes(emregado.id)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

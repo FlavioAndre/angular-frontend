@@ -1,0 +1,7 @@
+<div *ngIf="errorMessage != null" >
+  <span class="fa fa-remove  invalid-feedback "></span>
+  <span class="sr-only">(error)</span>
+  <div class="shadow-lg alert alert-danger  errorDiv" role="alert">
+    {{ errorMessage }}
+  </div>
+</div>
