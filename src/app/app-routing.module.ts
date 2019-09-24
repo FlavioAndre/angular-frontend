@@ -11,7 +11,7 @@ import { ClienteDetatalhesComponent } from './cliente/cliente-detatalhes/cliente
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
-  { path: 'cliente', component: ClienteCreateComponent, canActivate: [AuthGuardService] },
+  { path: 'cliente', component: ClienteCreateComponent },
   { path: 'clientes', component: ClienteListComponent, canActivate: [AuthGuardService] },
   { path: 'detalhes/:id', component: ClienteDetatalhesComponent, canActivate: [AuthGuardService] },
   { path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [AuthGuardService] },
