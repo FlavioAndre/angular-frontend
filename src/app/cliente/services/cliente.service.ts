@@ -10,7 +10,7 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   getClientes() {
-    return this.http.get<any>(`/api/clientes`);
+    return this.http.get<any>(`'https://curso-angular-datainfo.herokuapp.com/clientes`);
   }
 
   getCliente(idCLiente: any) {
