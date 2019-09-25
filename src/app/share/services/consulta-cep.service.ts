@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ConsultaCepService {
 
-  private baseUrl = environment.API_CEP_URL;
+  private baseUrl = environment.API_URL;
   constructor(private http: HttpClient) { }
 
   consultaCEP(cep: string) {
@@ -25,9 +25,9 @@ export class ConsultaCepService {
 
       // Valida o formato do CEP.
       if (validacep.test(cep)) {
-        //return this.http.get(`${this.baseUrl}/${cep}/json`);
+         return this.http.get(`${this.baseUrl}/clientes/cep/${cep}`);
+          
           //return this.http.get(`https://viacep.com.br/ws/${cep}/json`);
-        return this.http.get(`/cep-ws/${cep}/json`);
       }
     }
 
