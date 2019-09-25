@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConsultaCepService {
 
+  private baseUrl = environment.API_CEP_URL;
   constructor(private http: HttpClient) { }
 
   consultaCEP(cep: string) {
@@ -23,7 +25,7 @@ export class ConsultaCepService {
 
       // Valida o formato do CEP.
       if (validacep.test(cep)) {
-        return this.http.get(`https://viacep.com.br/ws/${cep}/json`);
+        return this.http.get(`${this.baseUrl}/${cep}/json`);
       }
     }
 

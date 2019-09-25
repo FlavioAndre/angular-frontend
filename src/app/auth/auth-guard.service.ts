@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenService } from './token.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { TokenService } from './token.service';
 export class AuthGuardService implements CanActivate {
   public clientId = 'cursoangular';
 
+  private baseUrl = environment.API_URL;
   constructor(private router: Router
     , private http: HttpClient
     , private tokenService: TokenService) { }
@@ -34,7 +36,7 @@ export class AuthGuardService implements CanActivate {
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8', Authorization: 'Basic '
         + btoa(this.clientId + ':cursoangular123')
     });
-    this.http.post('/api/oauth/token', params.toString(), { headers })
+    this.http.post(`${this.baseUrl}/oauth/token`, params.toString(), { headers })
       .subscribe(
         data => this.saveToken(data),
         err => alert('Login inválido!')
