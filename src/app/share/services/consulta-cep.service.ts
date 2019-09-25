@@ -26,7 +26,8 @@ export class ConsultaCepService {
       // Valida o formato do CEP.
       if (validacep.test(cep)) {
         //return this.http.get(`${this.baseUrl}/${cep}/json`);
-          return this.http.get(`https://viacep.com.br/ws/${cep}/json`);
+          //return this.http.get(`https://viacep.com.br/ws/${cep}/json`);
+        return this.http.get(`/cep-ws/${cep}/json`);
       }
     }
 
