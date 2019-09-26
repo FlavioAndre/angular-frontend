@@ -12,16 +12,21 @@ import { ClienteDetalhesComponent } from './cliente/cliente-detalhes/cliente-det
 
 const routes: Routes = [
 
+  {
+    path: 'clientes',
+    loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule)
+    , canActivate: [AuthGuardService]
+  },
   { path: 'login', component: LoginComponent },
-  { path: 'cliente', component: ClienteCreateComponent },
-  { path: 'clientes', component: ClienteListComponent },
+  { path: 'cliente', component: ClienteCreateComponent, canActivate: [AuthGuardService]  },
+  { path: 'clientes', component: ClienteListComponent, canActivate: [AuthGuardService]  },
   { path: 'detalhes/:id', component: ClienteDetalhesComponent, canActivate: [AuthGuardService] },
   { path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [AuthGuardService] },
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -45,7 +45,7 @@
 </div>
 
 <br />
-<table class="table">
+<table class="table" *ngIf="(documentos$ | async) as documentos; else loading">
   <thead class="thead-dark">
     <tr>
       <th>Id</th>
@@ -55,7 +55,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let doc of documentos$ | async">
+    <tr *ngFor="let doc of documentos">
       <td>{{ doc.id }}</td>
       <td>{{ doc.nome }}</td>
       <td>{{ doc.contentType }}</td>
@@ -77,6 +77,9 @@
     </tr>
   </tbody>
 </table>
+   <ng-template #loading>
+      <span>Carregando Cursos...</span>
+    </ng-template>
 <br />
 
 <button (click)="list()" class="btn btn-primary">Retornar</button>

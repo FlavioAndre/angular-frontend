@@ -1,3 +1,4 @@
+import { ClienteRoutingModule } from './cliente-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +15,8 @@ import { ClienteDetalhesComponent } from './cliente-detalhes/cliente-detalhes.co
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    ClienteRoutingModule
   ]
 })
 export class ClienteModule { }
