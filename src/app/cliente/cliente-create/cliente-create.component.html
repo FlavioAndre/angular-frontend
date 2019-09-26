@@ -13,7 +13,7 @@
 
         <div class="col-md-3" [ngClass]="aplicaCssErro('cpfOuCnpj')">
           <label for="cpfOuCnpj" class="control-label">CPF/CNPJ</label>
-          <input type="text" class="form-control" id="cpfOuCnpj" formControlName="cpfOuCnpj">
+          <input type="text" class="form-control" id="cpfOuCnpj" formControlName="cpfOuCnpj" cpfOuCnpj>
           <app-error-msg [control]="formulario.get('cpfOuCnpj')" label="cpfOuCnpj"></app-error-msg>
           <app-campo-control-erro
             [mostrarErro]="formulario.get('cpfOuCnpj').status === 'INVALID' && verificaValidTouched('cpfOuCnpj')"
@@ -104,7 +104,7 @@
 
   <div class="row botoes">
     <div class=" btn-group btn-group-toggle" data-toggle="buttons">
-      <button class="shadow-lg btn btn-warning" (click)=" resetar()">Cancelar</button>
+      <button class="shadow-lg btn btn-warning" (click)=" resetar()">Limpar</button>
       <button type="submit" class="shadow-lg btn btn-success">Salvar</button>
     </div>
   </div>

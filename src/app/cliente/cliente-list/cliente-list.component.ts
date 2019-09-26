@@ -20,6 +20,7 @@ export class ClienteListComponent implements OnInit {
   ngOnInit() {
     this.reloadData();
   }
+
   reloadData() {
     this.clientes$ = this.clienteservice.getClientes();
   }

@@ -1,0 +1,90 @@
+<h2>Detalhes Cliente</h2>
+
+<hr />
+<div *ngIf="cliente">
+  <div>
+    <label><b>Nome: </b></label> {{ cliente.nome | uppercase}}
+  </div>
+  <div>
+    <label><b>CPF/CNPJ: </b></label> {{ cliente.cpfOuCnpj }}
+  </div>
+  <div>
+    <label><b>E-mail: </b></label> {{ cliente.email | uppercase}}
+  </div>
+</div>
+<br />
+<div class="custom-file" *ngIf="exibirUpload">
+  <input
+    type="file"
+    class="custom-file-input"
+    id="customFile"
+    accept="application/pdf,application/vnd.ms-excel"
+    (change)="onChange($event)"
+  />
+  <label class="custom-file-label" for="customFile" id="customFileLabel"
+    >Selecionar Arquivo</label
+  >
+  <br />
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" [style.width]="progress + '%'">
+      {{ progress }}%
+    </div>
+  </div>
+  <br />
+  <div style="margin-top: 10px">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onUpload()"
+      [disabled]="!files"
+    >
+      Salvar
+    </button>
+  </div>
+  <br />
+</div>
+
+<br />
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of documentos$ | async">
+      <td>{{ doc.id }}</td>
+      <td>{{ doc.nome }}</td>
+      <td>{{ doc.contentType }}</td>
+      <td>
+        <button
+          (click)="download(doc.id, doc.nome)"
+          class="btn btn-outline-info  mb-1 btn-sm"
+          style="margin-left: 10px"
+        >
+          Download
+        </button>
+        <button
+          class="btn btn-outline-danger mb-1 btn-sm"
+          (click)="onDelete(doc)"
+        >
+          Remover
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+<button (click)="list()" class="btn btn-primary">Retornar</button>
+<button
+  (click)="onExibirUpload()"
+  class="btn btn-success"
+  style="margin-left: 10px"
+>
+  Upload
+</button>
+<br />

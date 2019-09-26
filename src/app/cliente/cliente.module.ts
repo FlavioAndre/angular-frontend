@@ -5,10 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClienteListComponent } from './cliente-list/cliente-list.component';
 import { ClienteCreateComponent } from './cliente-create/cliente-create.component';
 import { SharedModule } from '../share/shared.module';
-import { ClienteDetatalhesComponent } from './cliente-detatalhes/cliente-detatalhes.component';
+import { ClienteDetalhesComponent } from './cliente-detalhes/cliente-detalhes.component';
 
 @NgModule({
-  declarations: [ClienteListComponent, ClienteCreateComponent, ClienteDetatalhesComponent],
+  declarations: [ClienteListComponent, ClienteCreateComponent, ClienteDetalhesComponent],
   imports: [
     CommonModule,
     HttpClientModule,

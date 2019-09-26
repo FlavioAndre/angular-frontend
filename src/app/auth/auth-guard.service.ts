@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenService } from './token.service';
 import { environment } from 'src/environments/environment';
+import { AlertModalService } from '../share/services/alert-modal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthGuardService implements CanActivate {
   private baseUrl = environment.API_URL;
   constructor(private router: Router
     , private http: HttpClient
-    , private tokenService: TokenService) { }
+    , private tokenService: TokenService
+    , private alertService: AlertModalService) { }
 
   canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
@@ -39,7 +41,7 @@ export class AuthGuardService implements CanActivate {
     this.http.post(`${this.baseUrl}/oauth/token`, params.toString(), { headers })
       .subscribe(
         data => this.saveToken(data),
-        err => alert('Login inválido!')
+        err => this.alertService.showAlertDanger('Login inválido!'),
       );
   }
 
@@ -70,5 +72,8 @@ export class AuthGuardService implements CanActivate {
     this.router.navigate(['/login']);
   }
 
+  hasToken() {
+    return this.tokenService.hasToken();
+  }
 
 }

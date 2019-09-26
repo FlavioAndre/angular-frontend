@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   API_URL: 'https://curso-angular-datainfo.herokuapp.com',
-  API_CEP_URL: 'https://viacep.com.br/ws',
 }
 
 /*

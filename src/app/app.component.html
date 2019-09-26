@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark" *ngIf='isLogOn()'>
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -13,7 +13,7 @@
   <router-outlet></router-outlet>
 </div>
 
-<footer>
+<footer *ngIf='isLogOn()'>
     <div class="footer fixed-bottom  p-1">
         <div class="container">
             <div class="row text-center">

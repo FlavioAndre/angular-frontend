@@ -1,17 +1,25 @@
-<form [formGroup]="formulario">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Endereço de email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email"
-    formControlName="email">
-    <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
-      <app-error-msg [control]="formulario.get('email')" label="Email"></app-error-msg>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Senha</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha"
-    formControlName="password">
-      <app-error-msg [control]="formulario.get('password')" label="Password"></app-error-msg>
-  </div>
 
-  <button (click)="LogOn()" class="btn btn-primary">Enviar</button>
-</form>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="./assets/user.png" id="icon" alt="User Icon" width="60" height="200"/>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="formulario">
+      <input type="email" id="email" class="fadeIn second" name="email" placeholder="e-mail"  formControlName="email">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password"  formControlName="password">
+      <input type="submit" class="fadeIn fourth" value="Log In" (click)="LogOn()">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+
+    </div>
+
+  </div>
+</div>
+

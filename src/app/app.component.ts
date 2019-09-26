@@ -20,4 +20,9 @@ export class AppComponent {
   logOff() {
     this.authGuardService.logout();
   }
+
+  isLogOn(){
+    return this.authGuardService.hasToken();
+  }
+
 }
