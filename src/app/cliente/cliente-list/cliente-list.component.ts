@@ -36,7 +36,7 @@ export class ClienteListComponent implements OnInit {
   }
 
   exibirDetalhes(id: number) {
-    this.router.navigate(['detalhes', id]);
+    this.router.navigate(['clientes/detalhes', id]);
   }
 
 }

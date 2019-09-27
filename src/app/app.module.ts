@@ -4,9 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmpregadoCrudComponent } from './empregado-crud/empregado-crud.component';
 import { EmpregadoListComponent } from './empregado-list/empregado-list.component';
-import { EmpregadoDetailsComponent } from './empregado-details/empregado-details.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrosModule } from './erros/erros.module';
 import { LoginComponent } from './home/login/login.component';
@@ -19,9 +17,7 @@ import { RequestInterceptor } from './auth/request.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    EmpregadoCrudComponent,
     EmpregadoListComponent,
-    EmpregadoDetailsComponent,
     LoginComponent,
 
   ],
