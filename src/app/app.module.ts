@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmpregadoListComponent } from './empregado-list/empregado-list.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrosModule } from './erros/erros.module';
 import { LoginComponent } from './home/login/login.component';
@@ -13,13 +12,17 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ClienteModule } from './cliente/cliente.module';
 import { AlertModule } from 'ngx-bootstrap';
 import { RequestInterceptor } from './auth/request.interceptor';
+import { EmpregadoCrudComponent } from './empregado-crud/empregado-crud.component';
+import { EmpregadoDetailsComponent } from './empregado-details/empregado-details.component';
+import { EmpregadoListComponent } from './empregado-list/empregado-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmpregadoListComponent,
     LoginComponent,
-
+    EmpregadoCrudComponent,
+    EmpregadoDetailsComponent,
+    EmpregadoListComponent,
   ],
   imports: [
     BrowserModule,
