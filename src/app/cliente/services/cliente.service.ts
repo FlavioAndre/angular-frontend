@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { take } from 'rxjs/operators';
 
@@ -27,6 +27,21 @@ export class ClienteService {
 
   removerDocumento(idDocumento: any) {
     return this.http.delete(`${this.baseUrl}/documentos/${idDocumento}`).pipe(take(1));
+  }
+
+  save(idCLiente: number, dataBody: string){
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    if (idCLiente !== null && idCLiente !== undefined) {
+        return this.http .put(`${this.baseUrl}/clientes`, dataBody, httpOptions).pipe(take(1));
+    }
+    return this.http .post(`${this.baseUrl}/clientes`, dataBody, httpOptions).pipe(take(1));
+
   }
 
 }

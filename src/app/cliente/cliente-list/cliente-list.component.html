@@ -3,8 +3,8 @@
     <h2>Lista de Clientes</h2>
   </div>
   <div class="panel-body">
-    <table class="table table-striped" *ngIf="(clientes$ | async) as clientes; else loading">
-      <thead>
+    <table class="table thead-dark" *ngIf="(clientes$ | async) as clientes; else loading">
+      <thead class="thead-dark">
         <tr>
           <th>Nome</th>
           <th>E-Mail</th>
@@ -17,7 +17,8 @@
           <td>{{cliente.nome}}</td>
           <td>{{cliente.email}}</td>
           <td>{{cliente.cpfOuCnpj}}</td>
-          <td> <button (click)="exibirDetalhes(cliente.id)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>
+          <td> <button (click)="exibirDetalhes(cliente.id)" class="btn btn-outline-dark" style="margin-left: 10px"><i class="fa fa-info-circle"></i></button>
+          <button (click)="alterar(cliente.id)" class="btn btn-outline-dark" style="margin-left: 10px"><i class="fa fa-pencil-square-o"></i></button>
           </td>
         </tr>
       </tbody>

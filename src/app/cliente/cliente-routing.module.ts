@@ -11,6 +11,7 @@ import { ClienteDetalhesComponent } from './cliente-detalhes/cliente-detalhes.co
 const cursosRoutes: Routes = [
     { path: '', component: ClienteListComponent, canActivate: [AuthGuardService]  },
     { path: 'cliente', component: ClienteCreateComponent, canActivate: [AuthGuardService]  },
+    { path: 'cliente/:id', component: ClienteCreateComponent, canActivate: [AuthGuardService]  },
     { path: 'detalhes/:id', component: ClienteDetalhesComponent, canActivate: [AuthGuardService] },
 ];
 

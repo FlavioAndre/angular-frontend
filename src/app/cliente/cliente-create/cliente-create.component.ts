@@ -11,7 +11,9 @@ import { EstadoService } from '../services/estado.service';
 import { ClienteService } from '../services/cliente.service';
 import { ConsultaCepService } from 'src/app/share/services/consulta-cep.service';
 import { MunicipioService } from '../services/municipio.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Cliente } from 'src/app/share/models/cliente';
+import { AlertModalService } from 'src/app/share/services/alert-modal.service';
 
 @Component({
   selector: 'app-cliente-create',
@@ -22,14 +24,15 @@ export class ClienteCreateComponent implements OnInit {
 
   estados: EstadoBr[];
   cidades: Cidade[];
-
+  cliente: Cliente;
   tipoPessoas: any[];
   formulario: FormGroup;
-
+  id: number;
   constructor(
+    private routeActivated: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private http: HttpClient,
+    private modal: AlertModalService,
     private estadoService: EstadoService,
     private municipioService: MunicipioService,
     private clienteService: ClienteService,
@@ -40,14 +43,11 @@ export class ClienteCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tipoPessoas = this.dropdownService.getTipoPessoa();
 
-    this.clienteService.getClientes().subscribe();
-
-    this.estadoService.getEstadosBr()
-      .subscribe(dados => this.estados = dados);
+    this.id = this.routeActivated.snapshot.params.id;
 
     this.formulario = this.formBuilder.group({
+      id: [null],
       codigoTipoCliente: [null],
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(35)]],
       email: [null, [Validators.required, Validators.email]],
@@ -62,6 +62,11 @@ export class ClienteCreateComponent implements OnInit {
       cpfOuCnpj: [null, [Validators.required, FormValidations.cpfCnpjValidator]]
 
     });
+
+    this.tipoPessoas = this.dropdownService.getTipoPessoa();
+
+    this.estadoService.getEstadosBr()
+      .subscribe(dados => this.estados = dados);
 
     this.formulario.get('cep').statusChanges
       .pipe(
@@ -84,8 +89,24 @@ export class ClienteCreateComponent implements OnInit {
         tap(console.log),
       )
       .subscribe(cidades => { this.cidades = cidades; this.setComboCidade(); });
+
+    this.buscarDadosDoCliente();
   }
 
+
+  private buscarDadosDoCliente() {
+     if (this.id !== undefined && this.id !== null) {
+      this.clienteService.getCliente(this.id)
+      .subscribe(data => {
+        this.cliente = data;
+
+        this.formulario.patchValue(data);
+        this.formulario.markAllAsTouched();
+        this.formulario.markAsDirty();
+      }, error => console.log(error));
+     }
+
+  }
 
   setComboCidade() {
 
@@ -139,26 +160,19 @@ export class ClienteCreateComponent implements OnInit {
   prepareOptions(options?: any) {
     if (!options) {
       const headers = new Headers({ 'Content-Type': 'application/json' });
-      options = { headers: headers };
+      options = { headers };
     }
     return options;
   }
 
   submit() {
+
     const dataBody = JSON.stringify(this.formulario.value);
-    console.log(dataBody);
-
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
-    return this.http
-      .post('/api/clientes', dataBody, httpOptions)
+    this.clienteService
+    .save(this.id, dataBody)
       .subscribe(
         dados => {
+          this.modal.showAlertSuccess('Cliente Salvo com sucesso!');
           this.router.navigate(['/clientes']);
         },
         (error: any) => alert(error)
@@ -208,7 +222,7 @@ export class ClienteCreateComponent implements OnInit {
   verificaEmailInvalido() {
     const campoEmail = this.formulario.get('email');
     if (campoEmail.errors) {
-      return campoEmail.errors['email'] && campoEmail.touched;
+      return campoEmail.errors.email && campoEmail.touched;
     }
   }
 
