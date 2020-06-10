@@ -2,21 +2,13 @@
 
 # CursoAngular8
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
-
 <p align="center">
     <a href="https://vercel.com/?utm_source=angular-frontend" target="_blank" rel="noopener">
       <img src="./public/powered-by-vercel.svg" width="175" alt="Powered by Vercel" />
     </a>
 </p>
 
-<p align="center">
-  <a href="https://angular-frontend-two.now.sh/">
-    <img src="https://angular.io/assets/images/logos/angular/angular.svg" height="96">
-    <h3 align="center">Visit site</h3>
-  </a>
-</p>
-
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
 
 ## Development server
 
