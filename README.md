@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   </a>
   
   <a href="https://angular-frontend-two.now.sh/">
-    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fangular.io%2Fassets%2Fimages%2Flogos%2Fangular%2Fangular.svg&imgrefurl=https%3A%2F%2Fangular.io%2Fguide%2Ffile-structure&tbnid=TRedJao56YuSgM&vet=12ahUKEwjUuYOfsffpAhUFALkGHVk6CHEQMygYegUIARDEAQ..i&docid=4SbwxZ_IlZMauM&w=800&h=800&q=angular%20image%20assets&ved=2ahUKEwjUuYOfsffpAhUFALkGHVk6CHEQMygYegUIARDEAQ" height="96">
+    <img src="https://angular.io/assets/images/logos/angular/angular.svg" height="96">
     <h3 align="center">Visit site</h3>
   </a>
 
