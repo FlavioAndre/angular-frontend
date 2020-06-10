@@ -3,11 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
 
 <p align="center">
-  <p>
     <a href="https://vercel.com/?utm_source=angular-frontend" target="_blank" rel="noopener">
       <img src="./public/powered-by-vercel.svg" width="175" alt="Powered by Vercel" />
     </a>
-  </p>
 </p>
 
 <p align="center">
