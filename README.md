@@ -1,4 +1,4 @@
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/FlavioAndre/angular-frontend) 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/FlavioAndre/angular-frontend) ![tests](https://github.com/FlavioAndre/angular-frontend/workflows/tests/badge.svg)
 
 # CursoAngular8
 
